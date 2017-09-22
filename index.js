@@ -9,16 +9,23 @@ function objectChangeCallsite (target, callback) {
   return new Proxy(target, {
     set: function (obj, prop, value) {
       var err = new Error()
-      var trace = err.stack
+      var trace = strip(err.stack)
       callback(prop, value, trace)
       obj[prop] = value
       return true
     },
     deleteProperty: function (target, prop) {
       var err = new Error()
-      var trace = err.stack
+      var trace = strip(err.stack)
       callback(prop, undefined, trace)
       return target.removeItem(prop)
     }
   })
+}
+
+function strip (str) {
+  var arr = str.split('\n')
+  arr = arr.slice(2)
+  arr[0] = arr[0].replace(/^ {4}at /, '')
+  return '\n' + arr.join('\n')
 }
