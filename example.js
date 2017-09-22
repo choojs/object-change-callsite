@@ -9,3 +9,5 @@ console.log(state)
 
 state.foo = 'hello'
 state.bar = 'world'
+
+console.log(state)

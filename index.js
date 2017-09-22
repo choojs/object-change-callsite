@@ -11,11 +11,14 @@ function objectChangeCallsite (target, callback) {
       var err = new Error()
       var trace = err.stack
       callback(prop, value, trace)
+      obj[prop] = value
+      return true
     },
     deleteProperty: function (target, prop) {
       var err = new Error()
       var trace = err.stack
       callback(prop, undefined, trace)
+      return target.removeItem(prop)
     }
   })
 }
