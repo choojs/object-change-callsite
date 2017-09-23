@@ -2,7 +2,7 @@ var onChange = require('./')
 
 var state = { foo: 'bar' }
 state = onChange(state, function (attr, value, callsite) {
-  console.log(`${attr} changed to ${value} at ${callsite}`)
+  console.log(`Property ${attr} changed to value ${value} at ${callsite}`)
 })
 
 console.log(state)
