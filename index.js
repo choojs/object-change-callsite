@@ -18,7 +18,11 @@ function objectChangeCallsite (target, callback) {
       var err = new Error()
       var trace = strip(err.stack)
       callback(prop, undefined, trace)
-      return target.removeItem(prop)
+      if (prop in target) {
+        delete target[prop]
+        return true
+      }
+      return false
     }
   })
 }
