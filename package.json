@@ -2,7 +2,7 @@
   "name": "object-change-callsite",
   "description": "Determine the callsite of an object change using Proxies",
   "repository": "yoshuawuyts/object-change-callsite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --extra --no-dev",
     "start": "node .",
