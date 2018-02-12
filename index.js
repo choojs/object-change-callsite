@@ -29,7 +29,7 @@ function objectChangeCallsite (target, callback) {
 
 function strip (str) {
   var arr = str.split('\n')
-  arr = arr.slice(2)
+  arr = arr.length > 2 ? arr.slice(2) : arr
   arr[0] = arr[0].replace(/^ {4}at /, '')
   return '\n' + arr.join('\n')
 }
