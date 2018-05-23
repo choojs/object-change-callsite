@@ -6,6 +6,11 @@ function objectChangeCallsite (target, callback) {
   assert.equal(typeof target, 'object', 'object-change-callsite: target should be type object')
   assert.equal(typeof callback, 'function', 'object-change-callsite: callback should be type function')
 
+  if (!Proxy) {
+    console.warn('This browser does not support Proxy, and onChange will not work as expected')
+    return target
+  }
+
   return new Proxy(target, {
     set: function (obj, prop, value) {
       var err = new Error()
